@@ -59,6 +59,43 @@ void insert_end(NODE *head, int data)
     }
     //return *head;
 }
+NODE del_front(NODE *head)
+{
+
+    if(*head==NULL)
+    {
+        return *head;
+    }
+    else
+    {
+        NODE curr = *head,next;
+        next = XOR(curr->npx,NULL);
+        next->npx = XOR(*head,XOR(next->npx,NULL));
+        free(curr);
+        *head = next;
+        return *head;
+    }
+}
+NODE del_end(NODE *head)
+{
+     if(*head==NULL)
+    {
+        return *head;
+    }
+    else
+    {
+        NODE curr = *head,next,prev=NULL;
+         while(XOR(prev,curr->npx)!=NULL)
+        {
+            next = XOR(prev,curr->npx);
+            prev = curr;
+            curr = next;
+        }
+        prev->npx = XOR(prev->npx,XOR(curr,NULL));
+        free(curr);
+        return *head;
+    }
+}
 void printNode(NODE *head)
 {
     NODE curr;
@@ -118,6 +155,10 @@ Enter elements
 4 5
 Elements in the list are:
 3 2 1 4 5
+Deletion at front
+2 1 4 5
+Deletion at end
+2 1 4
 */
 
 
