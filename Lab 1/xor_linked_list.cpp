@@ -137,6 +137,14 @@ int main()
     }
     cout<<"Elements in the list are: "<<endl;
     printNode(&head);
+    cout<<endl;
+    cout<<"Deletion at front"<<endl;
+    head = del_front(&head);
+    printNode(&head);
+    cout<<endl;
+    cout<<"Deletion at end"<<endl;
+    head=del_end(&head);
+    printNode(&head);
     return 0;
 
 }
